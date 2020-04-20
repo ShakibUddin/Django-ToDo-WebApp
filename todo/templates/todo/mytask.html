@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>My Tasks</title>
+</head>
+<body>
+<div class="nav-area">
+        <div class="topnav">
+            <a href="http://127.0.0.1:8000/home">Home</a>
+            <a class="active" href="http://127.0.0.1:8000/mytask">My Tasks</a>
+            <a href="http://127.0.0.1:8000/contact">Contact</a>
+            <a href="http://127.0.0.1:8000/about">About</a>
+        </div>
+</div>
+<div class="container-1">
+<div class="content">
+{% for todo in todos %}
+<li class="onetask" style="list-style-type:none;">
+      <h3 class="taskname"> {{ todo.task }} </h3>
+      <h5 class="date" style="display:inline;"> Added on {{ todo.date }} </h5>
+      <form style="display:inline;" action="/deletetask/{{todo.id}}/" method="post">{% csrf_token %}
+      <input class="deletebutton" type="submit" value="Delete">
+      </form>
+</li>
+<br>
+{% endfor %}
+</div>
+<div class="input-area">
+<form action="/addtask/" method="post">{% csrf_token %}
+    <label for="task-text"><h1 class="heading-text">Add a task below</h1></label>
+    <input class="text-box" type="text" name="task"><br><br>
+    <label for="date-text"><h1 class="heading-text">Date</h1></label>
+    <input class="date-box" type="date" name="date"><br><br>
+    <input class="add-button" type="submit" name="submit" value="Add">
+</form>
+</div>
+</div>
+</body>
+</html>
