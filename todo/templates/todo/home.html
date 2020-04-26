@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +10,30 @@
 <body>
     <div class="nav-area">
         <div class="topnav">
-            <a class="active" href="http://127.0.0.1:8000/home">Home</a>
-            <a href="http://127.0.0.1:8000/mytask">My Tasks</a>
-            <a href="http://127.0.0.1:8000/contact">Contact</a>
-            <a href="http://127.0.0.1:8000/about">About</a>
+            <a class="active" href="{% url 'todo_home' %}">Home</a>
+            <a href="{% url 'todo_mytask' %}">My Tasks</a>
+            <a href="{% url 'todo_contact' %}">Contact</a>
+            <a href="{% url 'todo_about' %}">About</a>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'logout' %}" style="float:right;margin-right:2%;">LogOut</a>
+              <a href="{% url 'change_password' %}" style="float:right;">Change Password</a>
+            {% else %}
+            <a href="{% url 'login' %}" style="float:right;margin-right:2%;">LogIn</a>
+            <a href="{% url 'register' %}" style="float:right;">SignUp</a>
+            {% endif %}
+        </div>
     </div>
-    </div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash-message">
+          <h3>{{ message }}</h3>
+        </div>
+      {% endfor %}
+    {% endif %}
     <div class="home">
-        <h1 style="color:#1E90FF;">Welcome!</h1>
-        <h2 style="color:#1E90FF;">Keep track of your daily tasks.</h2>
-        <a href="http://127.0.0.1:8000/contact"><button class="contact">Contact Us</button></a>
+        <h1 style="color:BlueViolet;">Welcome!</h1>
+        <h2 style="color:BlueViolet;">Keep track of your daily tasks.</h2>
+        <a href="{% url 'todo_contact' %}"><button class="contact">Contact Us</button></a>
     </div>
 </body>
 </html>

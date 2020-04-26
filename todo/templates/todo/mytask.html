@@ -7,33 +7,46 @@
     <title>My Tasks</title>
 </head>
 <body>
-<div class="nav-area">
-        <div class="topnav">
-            <a href="http://127.0.0.1:8000/home">Home</a>
-            <a class="active" href="http://127.0.0.1:8000/mytask">My Tasks</a>
-            <a href="http://127.0.0.1:8000/contact">Contact</a>
-            <a href="http://127.0.0.1:8000/about">About</a>
-        </div>
-</div>
+  <div class="nav-area">
+			<div class="topnav">
+					<a href="{% url 'todo_home' %}">Home</a>
+					<a class="active" href="{% url 'todo_mytask' %}">My Tasks</a>
+					<a href="{% url 'todo_contact' %}">Contact</a>
+					<a href="{% url 'todo_about' %}">About</a>
+					{% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" style="float:right;margin-right:2%;">LogOut</a>
+            <a href="{% url 'change_password' %}" style="float:right;">Change Password</a>
+					{% else %}
+					<a href="{% url 'login' %}" style="float:right;margin-right:2%;">LogIn</a>
+					<a href="{% url 'register' %}" style="float:right;">SignUp</a>
+					{% endif %}
+			</div>
+	</div>
 <div class="container-1">
 <div class="content">
 {% for todo in todos %}
-<li class="onetask" style="list-style-type:none;">
-      <h3 class="taskname"> {{ todo.task }} </h3>
-      <h5 class="date" style="display:inline;"> Added on {{ todo.date }} </h5>
-      <form style="display:inline;" action="/deletetask/{{todo.id}}/" method="post">{% csrf_token %}
-      <input class="deletebutton" type="submit" value="Delete">
-      </form>
-</li>
-<br>
+  {% if name == todo.name %}
+      <li class="onetask" style="list-style-type:none;">
+        <div class="task">
+          <h3> {{ todo.task }} </h3>
+        </div>
+        <h5 class="date" style="display:inline;">Added on <span style="color:SpringGreen;">{{ todo.addedon }}</span>, Finish before <span style="color:SpringGreen;">{{ todo.duedate }}</span> </h5>
+        <div class="button-set">
+        <form style="display:inline;" action="/deletetask/{{todo.id}}/" method="post">{% csrf_token %}
+          <input class="button-type-1" type="submit" value="Delete">
+        </form>
+        </div>
+      </li>
+      <br>
+  {% endif %}
 {% endfor %}
 </div>
 <div class="input-area">
 <form action="/addtask/" method="post">{% csrf_token %}
     <label for="task-text"><h1 class="heading-text">Add a task below</h1></label>
-    <input class="text-box" type="text" name="task"><br><br>
-    <label for="date-text"><h1 class="heading-text">Date</h1></label>
-    <input class="date-box" type="date" name="date"><br><br>
+    <input class="text-box" type="text" name="task" required><br><br>
+    <label for="date-text"><h1 class="heading-text">Due Date</h1></label>
+    <input class="date-box" type="date" name="date" required><br><br>
     <input class="add-button" type="submit" name="submit" value="Add">
 </form>
 </div>

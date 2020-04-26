@@ -5,44 +5,43 @@ body{
 .home{
 	font-family: "Lucida Console", Courier, monospace;
 	color: white;
-	position: absolute;
 	text-align: center;
 	margin: 10% 30%;
 }
-
 .nav-area{
 	background: white;
-	float: right;
 	top: 0;
 	position: fixed;
-	display: block;
+	display: inline-block;
 	width: 100%;
-	padding: 0.5%;
+	padding: 1%;
 }
 .topnav {
 		overflow: auto;
 }
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
   list-style: none;
-  color: #1E90FF;
+  color: BlueViolet;
   text-align: center;
-  padding: 10px 15px;
+  padding: 1%;
   text-decoration: none;
   font-size: 17px;
   transition-duration: 0.4s;
 }
 /* Change the color of links on hover */
 .topnav a:hover {
-  background: #1E90FF;
+  background: BlueViolet;
   color: white;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background: #1E90FF;
+  background: BlueViolet;
   color: white;
+}
+.topnav a{
+	float: left;
 }
 .about-text{
 	background: #1E90FF;
@@ -56,7 +55,7 @@ body{
 	box-shadow: 5px 10px 6px grey;
 }
 .contact-text{
-	background: #1E90FF;
+	background: BlueViolet;
 	font-family: "Lucida Console", Courier, monospace;
 	color: white;
 	position: absolute;
@@ -68,28 +67,25 @@ body{
 }
 .contact {
 	background-color: transparent;
-  border: 1px solid #1E90FF;
-  padding: 2% 2%;
+  border: 1px solid BlueViolet;
+  padding: 2% 4%;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  margin: 4% 2%;
-  color: #1E90FF;
+  margin: 3% 0%;
+  color: BlueViolet;
   transition-duration: 0.4s;
   text-transform: uppercase;
 }
 .contact:hover{
-	background-color: #1E90FF;
+	background-color: BlueViolet;
 	color: white;
 }
 .content{
-	background-size: contain;
 	margin-left: 5%;
-	margin-top: 8%;
-	width: 60%;
-	overflow: auto;
+	max-width: 60%;
 }
-.taskname{
+.task{
 	color: white;
 	margin: 2%;
 }
@@ -100,36 +96,51 @@ body{
 .onetask{
 	padding: 0.5%;
 	margin: 0.5%;
-	background: #1E90FF;
+	background: BlueViolet;
 	box-shadow: 5px 10px 6px grey;
+	overflow: hidden;
+	max-width: 90%;
+	width: 800px;
 }
-.deletebutton{
-	background-color: transparent;
+.button-set{
+	display: block;
+}
+.button-type-1,.button-type-2{
+	float: right;
+	margin: 1% 1%;
+	border: 1px solid DarkOrchid;
 	padding:1%;
-	border: 1px solid white;
-	margin-bottom: 1%;
+	display: inline;
 	font: 5%;
 	text-decoration: none;
 	color: white;
 	border-radius: 5%;
 	transition-duration: 0.4s;
 }
-.deletebutton:hover{
+.button-type-1{
+	background-color: GoldenRod;
+}
+.button-type-2{
+	background-color: LimeGreen;
+}
+.button-type-1:hover{
 	background-color: white;
-	color: #1E90FF;
+	color: DarkOrchid;
+}
+.button-type-2:hover{
+	background-color: white;
+	color: LimeGreen;
 }
 .input-area{
-	background-color: #1E90FF;
-	padding: 3%;
-	margin-top: 8%;
-	position: fixed;
+	background-color: MediumPurple;
+	padding: 2%;
 	right: 5%;
-	width: 20%;
-	float: right;
+	position: fixed;
+	max-width: 30%;
 }
 .heading-text{
 	color: white;
-	background-color: #1E90FF;
+	background-color: MediumPurple;
 }
 .text-box{
 	text-align: left;
@@ -161,9 +172,7 @@ body{
 	background-color:	white;
 	color: #1E90FF;
 }
-@media(min-width:400px){
-	.container-1{
-		display: flex;
-		justify-content: space-between;
-	}
+.container-1{
+	display: flex;
+	margin-top: 8%;
 }

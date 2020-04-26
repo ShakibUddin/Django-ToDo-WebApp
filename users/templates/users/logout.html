@@ -1,0 +1,21 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'users_style.css' %}">
+   <title>LogOut</title>
+</head>
+<body>
+<div class="content-section">
+    <h2 class="heading-class">You have been logged out.</h2>
+    <small class="heading-class">
+      Login again? <a class="login" href="{% url 'login' %}" style="color:yellow;">LogIn</a>
+    </small>
+		<br>
+		<small class="heading-class">
+      Go back to home page? <a href="{% url 'todo_home' %}" style="color:yellow;">Home</a>
+    </small>
+</div>
+</body>
+</html>

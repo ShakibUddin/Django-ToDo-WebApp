@@ -1,0 +1,35 @@
+.content-section{
+	background-color: BlueViolet;
+  margin: 2% 30%;
+  padding: 2% 2%;
+}
+.heading-class{
+  color: white;
+  text-align: center;
+	margin-top: 2%;
+}
+.form-group{
+  color: white;
+}
+.text1{
+  color: white;
+	margin: 2% 0%;
+}
+.button-type-1{
+	margin-top: 8%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	background-color: transparent;
+	padding:2% 5%;
+	border: 1px solid white;
+	font: 5%;
+	text-decoration: none;
+	color: white;
+	border-radius: 5%;
+	transition-duration: 0.4s;
+}
+.button-type-1:hover{
+	background-color: white;
+	color: BlueViolet;
+}

@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,14 +7,21 @@
    <title>About</title>
 </head>
 <body>
-<div class="nav-area">
-        <div class="topnav">
-            <a href="http://127.0.0.1:8000/home">Home</a>
-            <a href="http://127.0.0.1:8000/mytask">My Tasks</a>
-            <a href="http://127.0.0.1:8000/contact">Contact</a>
-            <a class="active" href="http://127.0.0.1:8000/about">About</a>
-    </div>
-</div>
+	<div class="nav-area">
+			<div class="topnav">
+					<a href="{% url 'todo_home' %}">Home</a>
+					<a href="{% url 'todo_mytask' %}">My Tasks</a>
+					<a href="{% url 'todo_contact' %}">Contact</a>
+					<a class="active" href="{% url 'todo_about' %}">About</a>
+					{% if request.user.is_authenticated %}
+						<a href="{% url 'logout' %}" style="float:right;margin-right:2%;">LogOut</a>
+						<a href="{% url 'change_password' %}" style="float:right;">Change Password</a>
+					{% else %}
+					<a href="{% url 'login' %}" style="float:right;margin-right:2%;">LogIn</a>
+					<a href="{% url 'register' %}" style="float:right;">SignUp</a>
+					{% endif %}
+			</div>
+	</div>
 <div class="about-text">
 	<p>This is a Django web app to keep track of daily tasks.</p>
 </div>

@@ -17,9 +17,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from users import views as user_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/',user_views.register,name='register'),
+    path('changepassword/',auth_views.PasswordChangeView.as_view(template_name='users/change_password.html'),name='change_password'),
+    path('passwordchangedone/',auth_views.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'),name='password_change_done'),
+    path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('', include('todo.urls')),
 ]

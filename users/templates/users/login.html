@@ -1,0 +1,24 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'users_style.css' %}">
+   <title>Login</title>
+</head>
+<body>
+	<div class="content-section">
+	<form method="POST">
+    {% csrf_token %}
+      <h3 class="heading-class">LogIn</h3>
+      {{ form|crispy }}
+      <button class="button-type-1" type="submit">LogIn</button>
+  </form>
+  <div class="signup-insteadof-signin">
+    <small class="text1">
+      Need an account? <a class="signup" href={% url 'register' %} style="color:yellow;">SignUp</a>
+    </small>
+  </div>
+</div>
+</body>
+</html>
